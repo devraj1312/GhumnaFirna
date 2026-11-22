@@ -1,6 +1,10 @@
 
 import { useNavigate } from "react-router-dom";
 import { FaPlane, FaHotel, FaTrain } from "react-icons/fa";
+
+import flightImage from "../../assets/travel/aeroplane.png";
+import hotelImage from "../../assets/travel/hotl.png";
+import trainImage from "../../assets/travel/train.png";
 import "./TravelServices.scss";
 
 const services = [
@@ -8,7 +12,7 @@ const services = [
     id: 1,
     title: "Flights",
     subtitle: "",
-    icon: <FaPlane />,
+    images: flightImage,
     className: "flights",
     path: "/flights",
   },
@@ -16,7 +20,7 @@ const services = [
     id: 2,
     title: "Hotels",
     subtitle: "Up to 70% Off*",
-    icon: <FaHotel />,
+    images: hotelImage,
     className: "hotels",
     path: "/hotels",
   },
@@ -24,7 +28,7 @@ const services = [
     id: 3,
     title: "Trains",
     subtitle: "",
-    icon: <FaTrain />,
+    images: trainImage,
     className: "trains",
     path: "/trains",
   },
@@ -59,7 +63,10 @@ function TravelServices() {
 
             <div className="travel-services__illustration">
               <div className="travel-services__circle">
-                {service.icon}
+                <img 
+                  src={service.images}
+                  className="travel-services__image"
+                />
               </div>
             </div>
           </div>

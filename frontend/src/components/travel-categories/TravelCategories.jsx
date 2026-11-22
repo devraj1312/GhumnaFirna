@@ -1,6 +1,11 @@
 
 import { useNavigate } from "react-router-dom";
 
+import darshan from "../../assets/travel/hindu-temple.png";
+import packages from "../../assets/travel/packages.png";
+import cab from "../../assets/travel/taxi-cab.png";
+import heritage from "../../assets/travel/heritage-temple.png";
+
 import {
   FaBus,
   FaUmbrellaBeach,
@@ -14,25 +19,25 @@ const categories = [
   {
     id: 1,
     title: "Darshan",
-    icon: <FaBus />,
+    images: darshan,
     path: "/darshan",
   },
   {
     id: 2,
     title: "Packages",
-    icon: <FaUmbrellaBeach />,
+    images: packages,
     path: "/packages",
   },
   {
     id: 3,
     title: "Cabs",
-    icon: <FaTaxi />,
+    images: cab,
     path: "/cabs",
   },
   {
     id: 4,
     title: "Heritages",
-    icon: <FaLandmark />,
+    images: heritage,
     path: "/heritages",
     isNew: true,
   },
@@ -59,7 +64,10 @@ function TravelCategories() {
             }}
           >
             <div className="travel-categories__icon">
-              {category.icon}
+              <img 
+                src={category.images} 
+                className="travel-categories__images"
+              />
             </div>
 
             <div className="travel-categories__title">

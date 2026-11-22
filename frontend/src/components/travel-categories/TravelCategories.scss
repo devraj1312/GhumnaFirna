@@ -36,7 +36,8 @@
 
     &:hover {
       .travel-categories__icon {
-        color: $accent;
+        background-color: $primary-light;
+        border-radius: 15px;
         transform: translateY(-3px);
       }
     }
@@ -50,6 +51,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__images{
+    height: 40px;
   }
 
   &__title {
@@ -122,6 +126,9 @@
 
     &__icon {
       font-size: 21px;
+    }
+    &__images{
+      height: 26px;
     }
 
     &__title {

@@ -89,7 +89,7 @@
     bottom: -28px;
 
     border-radius: 50%;
-    background: $primary-light;
+    background: $circle-bg;
 
     display: flex;
     align-items: center;
@@ -146,7 +146,7 @@
 
     &__content {
       h3 {
-        font-size: 15px;
+        font-size: 17px;
       }
 
       p {
@@ -192,7 +192,7 @@
 
     &__content {
       h3 {
-        font-size: 13px;
+        font-size: 15px;
         line-height: 1.3;
       }
 

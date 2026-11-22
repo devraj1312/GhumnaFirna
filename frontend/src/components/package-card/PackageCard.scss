@@ -52,8 +52,10 @@
   }
 
   &__price {
+    width: 85%;
+    border-radius: 0px 10px 0px 0px;
     padding: 10px 14px;
-    background: $primary;
+    background: $package-bg;
     color: $white;
     font-size: 19px;
     font-weight: 700;
@@ -80,6 +82,7 @@
     }
 
     &__price {
+      width: 70%;
       padding: 8px 10px;
       font-size: 15px;
 

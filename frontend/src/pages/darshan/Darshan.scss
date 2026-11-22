@@ -26,6 +26,7 @@
   }
 
   &__grid {
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
@@ -52,7 +53,7 @@
 
     &__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 13px;
     }
   }
 }
@@ -63,8 +64,8 @@
     padding: 20px 0;
 
     &__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 12px;
     }
   }
 }
