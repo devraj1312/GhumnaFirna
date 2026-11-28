@@ -23,7 +23,8 @@ function AboutContact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const name = formData.get("name");
     const phone = formData.get("phone");
@@ -51,7 +52,14 @@ function AboutContact() {
 
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
+    // Open WhatsApp
     window.open(whatsappURL, "_blank");
+
+    // Clear form fields
+    form.reset();
+    // Explicitly clear category and description
+    form.elements.namedItem("category").value = "";
+    form.elements.namedItem("description").value = "";
   };
 
   // Scroll to the requested section when navigating with a URL hash

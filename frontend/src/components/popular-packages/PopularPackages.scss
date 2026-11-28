@@ -25,7 +25,7 @@
       color: $text-dark;
       margin: 0;
       span{
-        color: $primary;
+        color: $package-bg;
       }
     }
   }
@@ -35,7 +35,7 @@
     align-items: center;
     gap: 6px;
     background: transparent;
-    color: $primary;
+    color: $package-bg;
     font-size: 14px;
     font-weight: 600;
     padding: 5px;

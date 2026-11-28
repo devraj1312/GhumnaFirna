@@ -7,29 +7,54 @@
   background: $white;
 
   &__container {
+    position: relative;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 10px;
-
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
+    padding: 15px 10px;
 
     background: $white;
     border: 1px solid $border;
     border-radius: 18px;
+
+    // Horizontal scrolling
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: $primary-light transparent;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $primary-light;
+      border-radius: 10px;
+    }
+  }
+
+  // All categories in one horizontal row
+  &__grid {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   &__item {
-    min-width: 0;
+    flex: 1 0 110px;
+    min-width: 110px;
     min-height: 85px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 
     cursor: pointer;
     transition: all 0.3s ease;
@@ -46,40 +71,38 @@
   &__icon {
     font-size: 28px;
     color: $primary;
-    transition: all 0.3s ease;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all 0.3s ease;
   }
-  &__images{
+
+  &__images {
     height: 60px;
+    width: auto;
+    object-fit: contain;
   }
 
   &__title {
-    font-family: $font-secondary;
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px;
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
     color: $text-dark;
     text-align: center;
     line-height: 1.4;
+    white-space: nowrap;
   }
 
-  .new-badge {
-    display: inline-block;
-    padding: 2px 5px;
-    background: $success;
-    color: $white;
-    font-size: 9px;
-    font-weight: 700;
-    border-radius: 4px;
+  // Toggle hidden on desktop
+  &__toggle {
+    display: none;
   }
 }
 
@@ -87,17 +110,17 @@
 @media (max-width: 768px) {
   .travel-categories {
     &__container {
-      padding: 16px 8px;
-      gap: 5px;
+      width: 94%;
+      gap: 3px;
     }
 
     &__item {
+      flex-basis: 100px;
       min-height: 75px;
-      gap: 8px;
     }
 
-    &__icon {
-      font-size: 24px;
+    &__images {
+      height: 48px;
     }
 
     &__title {
@@ -107,39 +130,158 @@
 }
 
 // Mobile
+
 @media (max-width: 480px) {
   .travel-categories {
-    padding-bottom: 4px;
-    
+    padding-bottom: 20px;
 
     &__container {
+      position: relative;
       width: 92%;
-      padding: 7px 5px;
+      margin: 0 auto;
+      padding: 10px 5px 0;
+      box-sizing: border-box;
+
+      display: block;
+
+      height: 100px;
+      overflow: visible;
+
+      border: 1px solid $border;
+      border-radius: 16px;
+      background: $white;
+
+      transition: height 0.4s ease-in-out;
+    }
+
+    // Expanded frame
+    &__container.is-expanded {
+      height: 175px;
+    }
+
+    // Categories grid
+    &__grid {
+      width: 100%;
+      height: 68px;
+      overflow: hidden;
+
+      display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 3px;
-      border-radius: 14px;
+      grid-template-rows: repeat(2, 68px);
+      gap: 10px 3px;
+
+      transition: height 0.4s ease-in-out;
+    }
+
+    // Expanded grid shows both rows
+    &__container.is-expanded &__grid {
+      height: 175px;
     }
 
     &__item {
-      min-height: 65px;
-      gap: 2px;
+      width: 100%;
+      min-width: 0;
+      height: 68px;
+      min-height: 68px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: none;
     }
 
     &__icon {
-      font-size: 22px;
+      width: 100%;
+      height: 44px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    &__images{
-      height: 40px;
+
+    &__images {
+      width: auto;
+      height: 44px;
+      max-width: 100%;
+      object-fit: contain;
     }
 
     &__title {
-      font-size: 11px;
-      gap: 3px;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: center;
+      white-space: normal;
     }
 
-    .new-badge {
-      font-size: 7px;
-      padding: 2px 3px;
+    // Arrow always visible at bottom center
+    &__toggle {
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      transform: translateX(-50%);
+
+      width: 80px;
+      height: 24px;
+      padding: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: $white;
+      border: 1px solid $border;
+      border-radius: 30px;
+
+      cursor: pointer;
+      z-index: 999;
+
+      &:hover {
+        border-color: $primary;
+        box-shadow: $shadow;
+      }
+
+      &:active {
+        transform: translateX(-50%) scale(0.95);
+      }
     }
+
+    // Arrow icon
+    &__arrow {
+      width: 10px;
+      height: 10px;
+
+      border-right: 3px solid $package-bg;
+      border-bottom: 3px solid $package-bg;
+
+      transform: rotate(45deg);
+      margin-top: -5px;
+
+      animation: arrowBounce 1.5s ease-in-out infinite;
+    }
+
+    // Arrow direction on expand
+    &__container.is-expanded &__arrow {
+      transform: rotate(225deg);
+      margin-top: 5px;
+      animation: none;
+    }
+  }
+}
+
+// Arrow animation
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(4px) rotate(45deg);
   }
 }

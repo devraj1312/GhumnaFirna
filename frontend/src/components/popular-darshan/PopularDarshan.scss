@@ -25,7 +25,7 @@
       color: $text-dark;
       margin: 0;
       span{
-        color: $primary;
+        color: $hotel-primary;
       }
     }
   }
@@ -36,12 +36,12 @@
     gap: 6px;
     padding: 5px;
     background: transparent;
-    color: $primary;
+    color: $hotel-primary;
     font-size: 14px;
     font-weight: 600;
 
     &:hover {
-      color: $accent;
+      color: $hotel-primary-dark;
     }
   }
 

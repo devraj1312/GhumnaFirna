@@ -34,8 +34,9 @@ function Home() {
 
       <main className="app-content">
         <TravelServices />
-        <TravelCategories />
         <HeroBanner />
+        <TravelCategories />
+        
         <PopularPackages />
         <PopularDarshan />
         <WhyBookUs />
